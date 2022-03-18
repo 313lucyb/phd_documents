@@ -1,0 +1,10 @@
+#!/bin/bash --login
+#$ -S bin/bash
+#$ -cwd
+#$ -pe smp.pe 7
+
+module load apps/gcc/R/3.6.2
+module load apps/gcc/jags/4.3.0-gcc-8.2.0
+export MC_CORES=$NSLOTS
+
+Rscript CSF_JM_TA_3.R JM_TA_3.1
