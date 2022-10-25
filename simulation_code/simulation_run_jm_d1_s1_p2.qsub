@@ -1,0 +1,13 @@
+#!/bin/bash --login
+#$ -S bin/bash
+#$ -cwd
+#$ -pe smp.pe 20
+
+module load apps/gcc/R/4.1.0
+module load apps/gcc/jags/4.3.0-gcc-8.2.0
+
+export MC_CORES=0
+
+#$ -t 1-2
+
+Rscript simulation_run_jm_d1_s1_p2.R $SGE_TASK_ID > simulation_warnings_jm_d1_s1_p2.$SGE_TASK_ID
